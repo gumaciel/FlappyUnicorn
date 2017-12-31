@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://scripts/classwall.gd" type="Script" id=1]
+[ext_resource path="res://sprites/map/wall_top.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.44444, 11.0556 )
+
+[node name="factory_wall" type="Node"]
+
+[node name="wall_top" type="Area2D" parent="."]
+
+transform/scale = Vector2( 2.5, 2.5 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 2.01064, 0, 0, 6.81577, 15, 74.6 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="wall_top"]
+
+texture = ExtResource( 2 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_top"]
+
+transform/pos = Vector2( 15, 74.6 )
+transform/scale = Vector2( 2.01064, 6.81577 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="obj" type="Sprite" parent="wall_top"]
+
+transform/pos = Vector2( 15.6, 173.6 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="wall_bot" type="Area2D" parent="."]
+
+transform/pos = Vector2( 167, 0 )
+transform/scale = Vector2( 2.5, 2.5 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 2.01064, 0, 0, 6.77979, 15, 75.5056 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="wall_bot"]
+
+transform/pos = Vector2( 0, 0.4 )
+texture = ExtResource( 2 )
+centered = false
+flip_v = true
+region_rect = Rect2( 329, 0, 28, 122 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_bot"]
+
+transform/pos = Vector2( 15, 75.5056 )
+transform/scale = Vector2( 2.01064, 6.77979 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Position2D" type="Position2D" parent="."]
+
+

@@ -1,0 +1,415 @@
+[gd_scene load_steps=26 format=1]
+
+[ext_resource path="res://scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://sprites/white_pixel.png" type="Texture" id=2]
+[ext_resource path="res://sprites/map/logo.png" type="Texture" id=3]
+[ext_resource path="res://sprites/map/score.png" type="Texture" id=4]
+[ext_resource path="res://fonts/fontmain.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://sprites/map/background.png" type="Texture" id=6]
+[ext_resource path="res://scenes/spawn_wall.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/choose_flapper.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/map/ground.png" type="Texture" id=9]
+[ext_resource path="res://sprites/map/menu.png" type="Texture" id=10]
+[ext_resource path="res://sprites/map/start.png" type="Texture" id=11]
+[ext_resource path="res://sprites/map/ok.png" type="Texture" id=12]
+[ext_resource path="res://sprites/map/pause.png" type="Texture" id=13]
+
+[sub_resource type="GDScript" id=1]
+
+resource/name = "pause"
+script/source = "extends CanvasLayer
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	set_process_input(true)
+	pass
+func _input(event):
+	if event.is_action_pressed(\"pause\") and not event.is_echo():
+		get_tree().set_pause(!get_tree().is_paused())
+			
+		if get_tree().is_paused():
+			get_node(\"TextureFrame\").show()
+		else:
+			get_node(\"TextureFrame\").hide()
+"
+
+[sub_resource type="CanvasItemShader" id=2]
+
+_code = {
+"fragment": "vec4 window_pixel = vec4(texscreen(SCREEN_UV), 1);
+float avg = (window_pixel.r + window_pixel.g + window_pixel.b) / 3;
+COLOR = vec4(avg, avg, avg, 1);",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
+[sub_resource type="CanvasItemMaterial" id=3]
+
+shader/shader = SubResource( 2 )
+shader/shading_mode = 0
+
+[sub_resource type="GDScript" id=4]
+
+script/source = "extends Label
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	set_process(true)
+	pass
+	
+func _process(delta):
+	set_text(str(main.points))
+"
+
+[sub_resource type="GDScript" id=5]
+
+script/source = "extends Label
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	set_process(true)
+	pass
+func _process(delta):
+	set_text(str(main.bestscore))
+	"
+
+[sub_resource type="GDScript" id=6]
+
+script/source = "extends ParallaxBackground
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+
+func _ready():
+	set_process(true)
+	pass
+
+func _process(delta):
+	if get_owner().ingame and not main.dead:
+		set_scroll_offset(get_scroll_offset() + Vector2(-1, 0) * main.vel * delta)
+	pass"
+
+[sub_resource type="GDScript" id=7]
+
+script/source = "extends ParallaxLayer
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	# Called every time the node is added to the scene.
+	
+	set_mirroring(Vector2(Globals.get(\"display/width\"), 0))
+
+	pass
+"
+
+[sub_resource type="GDScript" id=8]
+
+script/source = "extends ParallaxLayer
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	set_mirroring(Vector2(Globals.get(\"display/width\"), 0))
+
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id=9]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="GDScript" id=10]
+
+script/source = "extends Area2D
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	add_to_group(main.GROUP_BLOCK)
+	pass
+
+
+func _on_colission_ground_area_enter( area ):
+	print(\"entrou\")
+	print(area)
+	pass # replace with function body
+"
+
+[sub_resource type="CanvasItemMaterial" id=11]
+
+shader/shading_mode = 0
+
+[sub_resource type="RectangleShape2D" id=12]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[node name="main" type="CanvasLayer"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+script/script = ExtResource( 1 )
+
+[node name="pause" type="CanvasLayer" parent="."]
+
+process/pause_mode = 2
+editor/display_folded = true
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+script/script = SubResource( 1 )
+
+[node name="TextureFrame" type="TextureFrame" parent="pause"]
+
+visibility/visible = false
+material/material = SubResource( 3 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 480.0
+margin/bottom = 800.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 0
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+editor/display_folded = true
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="logo" type="Sprite" parent="HUD"]
+
+transform/pos = Vector2( 244, 224 )
+transform/scale = Vector2( 2.40909, 1.9 )
+texture = ExtResource( 3 )
+
+[node name="score" type="Sprite" parent="HUD"]
+
+transform/pos = Vector2( 238, 347 )
+transform/scale = Vector2( 2.37509, 2.49353 )
+texture = ExtResource( 4 )
+
+[node name="points" type="Label" parent="HUD"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 220.0
+margin/top = 137.0
+margin/right = 260.0
+margin/bottom = 168.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script/script = SubResource( 4 )
+
+[node name="highscore" type="Label" parent="HUD"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 300.0
+margin/top = 369.0
+margin/right = 340.0
+margin/bottom = 400.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.0117188, 0.00151062, 0.00151062, 1 )
+valign = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script/script = SubResource( 5 )
+
+[node name="Parallax" type="ParallaxBackground" parent="."]
+
+layer = 0
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = true
+script/script = SubResource( 6 )
+
+[node name="backgroundLayer" type="ParallaxLayer" parent="Parallax"]
+
+motion/scale = Vector2( 0.25, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+script/script = SubResource( 7 )
+
+[node name="background" type="Sprite" parent="Parallax/backgroundLayer"]
+
+texture = ExtResource( 6 )
+centered = false
+
+[node name="wallLayer" type="ParallaxLayer" parent="Parallax"]
+
+motion/scale = Vector2( 0, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+
+[node name="spawn_wall" parent="Parallax/wallLayer" instance=ExtResource( 7 )]
+
+z/relative = false
+
+[node name="flapperLayer" type="ParallaxLayer" parent="Parallax"]
+
+motion/scale = Vector2( 0, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+
+[node name="choose_flapper" parent="Parallax/flapperLayer" instance=ExtResource( 8 )]
+
+[node name="groundLayer" type="ParallaxLayer" parent="Parallax"]
+
+z/z = 200
+z/relative = false
+motion/scale = Vector2( 1, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+script/script = SubResource( 8 )
+
+[node name="ground" type="Area2D" parent="Parallax/groundLayer"]
+
+transform/pos = Vector2( 361, 359 )
+input/pickable = true
+shapes/0/shape = SubResource( 9 )
+shapes/0/transform = Matrix32( 32.4615, 0, 0, 8.73077, -119, 354 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = SubResource( 10 )
+
+[node name="ground" type="Sprite" parent="Parallax/groundLayer/ground"]
+
+transform/pos = Vector2( -361, 267 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax/groundLayer/ground"]
+
+transform/pos = Vector2( -119, 354 )
+transform/scale = Vector2( 32.4615, 8.73077 )
+shape = SubResource( 9 )
+trigger = false
+_update_shape_index = 0
+
+[node name="touch" type="Node" parent="."]
+
+[node name="jump" type="TouchScreenButton" parent="touch"]
+
+material/material = SubResource( 11 )
+transform/pos = Vector2( 223, 383 )
+transform/scale = Vector2( 25, 41 )
+z/z = 1
+normal = null
+pressed = null
+bitmask = null
+shape = SubResource( 12 )
+shape_centered = true
+shape_visible = false
+passby_press = true
+action = "jump"
+visibility_mode = 1
+
+[node name="store" type="TouchScreenButton" parent="touch"]
+
+transform/pos = Vector2( 191, 434 )
+transform/scale = Vector2( 2.45, 2.35714 )
+z/z = 10
+normal = ExtResource( 10 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = "store"
+visibility_mode = 0
+
+[node name="ingame" type="TouchScreenButton" parent="touch"]
+
+transform/pos = Vector2( 192, 366 )
+transform/scale = Vector2( 2.425, 2.35714 )
+normal = ExtResource( 11 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "ingame"
+visibility_mode = 0
+
+[node name="ok" type="TouchScreenButton" parent="touch"]
+
+transform/pos = Vector2( 191, 428 )
+transform/scale = Vector2( 2.45, 3.07143 )
+normal = ExtResource( 12 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "start"
+visibility_mode = 0
+
+[node name="pause" type="TouchScreenButton" parent="touch"]
+
+process/pause_mode = 2
+transform/pos = Vector2( 28, 28 )
+transform/scale = Vector2( 3.07692, 2.71429 )
+normal = ExtResource( 13 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "pause"
+visibility_mode = 0
+
+

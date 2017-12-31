@@ -1,0 +1,745 @@
+[gd_scene load_steps=58 format=1]
+
+[ext_resource path="res://scripts/store_flappers.gd" type="Script" id=1]
+[ext_resource path="res://scripts/classflappers.gd" type="Script" id=2]
+[ext_resource path="res://sprites/flappers/alys.png" type="Texture" id=3]
+[ext_resource path="res://scenes/select.tscn" type="PackedScene" id=4]
+[ext_resource path="res://samples/alysson/choice.wav" type="Sample" id=5]
+[ext_resource path="res://samples/alysson/death.wav" type="Sample" id=6]
+[ext_resource path="res://samples/alysson/jump.wav" type="Sample" id=7]
+[ext_resource path="res://samples/alysson/obj.wav" type="Sample" id=8]
+[ext_resource path="res://samples/alysson/start.wav" type="Sample" id=9]
+[ext_resource path="res://sprites/flappers/Jeane.png" type="Texture" id=10]
+[ext_resource path="res://samples/jeane/choice.wav" type="Sample" id=11]
+[ext_resource path="res://samples/jeane/death.wav" type="Sample" id=12]
+[ext_resource path="res://samples/jeane/jump.wav" type="Sample" id=13]
+[ext_resource path="res://samples/jeane/obj.wav" type="Sample" id=14]
+[ext_resource path="res://samples/jeane/start.wav" type="Sample" id=15]
+[ext_resource path="res://sprites/flappers/manu.png" type="Texture" id=16]
+[ext_resource path="res://samples/manu/choice.wav" type="Sample" id=17]
+[ext_resource path="res://samples/manu/death.wav" type="Sample" id=18]
+[ext_resource path="res://samples/manu/jump.wav" type="Sample" id=19]
+[ext_resource path="res://samples/manu/obj.wav" type="Sample" id=20]
+[ext_resource path="res://samples/manu/start.wav" type="Sample" id=21]
+[ext_resource path="res://sprites/flappers/ching.png" type="Texture" id=22]
+[ext_resource path="res://sprites/flappers/mari.png" type="Texture" id=23]
+[ext_resource path="res://sprites/flappers/Nati.png" type="Texture" id=24]
+[ext_resource path="res://sprites/flappers/athos.png" type="Texture" id=25]
+[ext_resource path="res://samples/athos/choice.wav" type="Sample" id=26]
+[ext_resource path="res://samples/athos/death.wav" type="Sample" id=27]
+[ext_resource path="res://samples/athos/jump.wav" type="Sample" id=28]
+[ext_resource path="res://samples/athos/obj.wav" type="Sample" id=29]
+[ext_resource path="res://samples/athos/start.wav" type="Sample" id=30]
+[ext_resource path="res://sprites/flappers/cabelinho.png" type="Texture" id=31]
+[ext_resource path="res://sprites/flappers/lipe.png" type="Texture" id=32]
+[ext_resource path="res://samples/filipe/choice.wav" type="Sample" id=33]
+[ext_resource path="res://samples/filipe/death.wav" type="Sample" id=34]
+[ext_resource path="res://samples/filipe/jump.wav" type="Sample" id=35]
+[ext_resource path="res://samples/filipe/obj.wav" type="Sample" id=36]
+[ext_resource path="res://samples/filipe/start.wav" type="Sample" id=37]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 16, 14, 13, 20, 3, 25, -8, 26, -20, 19, -23, 9, -25, 2 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -26, -10, -19, -20, -6, -25, 9, -25, 19, -22, 26, -15, 27, -1, 22, 7, 16, 14, -25, 2, -27, -1 )
+
+[sub_resource type="SampleLibrary" id=3]
+
+samples/choice = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 5 )
+}
+samples/death = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 6 )
+}
+samples/jump = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 7 )
+}
+samples/obj = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 8 )
+}
+samples/start = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 9 )
+}
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 11, -25, -20, 8, -24, 6, -22, -5, -6, -25 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -22, -5, -20, -19, -6, -25 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -13, 16, -20, 8, 11, -25, 17, -21, 24, -12, 24, -5 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -13, 16, 24, -5, 24, 4, 20, 11 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -6, 25, -13, 16, 20, 11, 16, 19, 8, 26 )
+
+[sub_resource type="SampleLibrary" id=9]
+
+samples/choice = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 11 )
+}
+samples/death = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 12 )
+}
+samples/jump = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 13 )
+}
+samples/obj = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 14 )
+}
+samples/start = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 15 )
+}
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 27, -23, 28, -8, 20, 8, 2, 26, -15, 26, -26, 12, -26, 4, -21, -6, 2, -26, 13, -26 )
+
+[sub_resource type="RectangleShape2D" id=11]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="SampleLibrary" id=12]
+
+samples/choice = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 17 )
+}
+samples/death = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 18 )
+}
+samples/jump = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 19 )
+}
+samples/obj = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 20 )
+}
+samples/start = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 21 )
+}
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 20, -18, 23, -10, 18, 9, 0, 23, -15, 26, -26, 12, -26, 4, -21, -11, -4, -25, 9, -24 )
+
+[sub_resource type="ConvexPolygonShape2D" id=14]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 25, -21, 27, -9, 25, 6, 3, 26, -13, 23, -23, 12, -26, 4, -23, -5, 3, -26, 13, -26 )
+
+[sub_resource type="ConvexPolygonShape2D" id=15]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 25, -17, 26, 0, 18, 13, 6, 25, -15, 26, -26, 12, -26, 4, -25, -20, -4, -25, 14, -25 )
+
+[sub_resource type="ConvexPolygonShape2D" id=16]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 20, -18, 23, -10, 19, 11, 0, 23, -15, 26, -26, 12, -26, 4, -23, -16, -9, -25, 9, -24 )
+
+[sub_resource type="SampleLibrary" id=20]
+
+samples/choice = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 26 )
+}
+samples/death = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 27 )
+}
+samples/jump = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 28 )
+}
+samples/obj = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 29 )
+}
+samples/start = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 30 )
+}
+
+[sub_resource type="ConvexPolygonShape2D" id=17]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 19, -20, 27, -10, 23, 11, 11, 25, -13, 24, -23, 11, -26, 4, -22, -14, -8, -25, 9, -24 )
+
+[sub_resource type="ConvexPolygonShape2D" id=18]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 19, -22, 27, -10, 20, 10, 14, 24, -3, 24, -20, 8, -23, -1, -21, -11, -9, -26, 8, -26 )
+
+[sub_resource type="SampleLibrary" id=19]
+
+samples/choice = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 33 )
+}
+samples/death = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 34 )
+}
+samples/jump = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 35 )
+}
+samples/obj = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 36 )
+}
+samples/start = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 37 )
+}
+
+[node name="store_flappers" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="alysson" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 101, 127 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="alysson"]
+
+texture = ExtResource( 3 )
+
+[node name="select" parent="alysson" instance=ExtResource( 4 )]
+
+[node name="sample" type="SamplePlayer2D" parent="alysson"]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 3
+config/samples = SubResource( 3 )
+config/pitch_random = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="alysson"]
+
+build_mode = 0
+polygon = Vector2Array( -26, -10, -19, -20, -6, -25, 9, -25, 19, -22, 26, -15, 27, -1, 22, 7, 16, 14, 13, 20, 3, 25, -8, 26, -20, 19, -23, 9, -25, 2, -27, -1 )
+shape_range = Vector2( 0, 1 )
+trigger = false
+
+[node name="jeane" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 232, 128 )
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 5 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 6 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
+shapes/3/shape = SubResource( 7 )
+shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/3/trigger = false
+shapes/4/shape = SubResource( 8 )
+shapes/4/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/4/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="jeane"]
+
+texture = ExtResource( 10 )
+
+[node name="select" parent="jeane" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 0, -2 )
+action = "select_jeane"
+
+[node name="sample" type="SamplePlayer2D" parent="jeane"]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 3
+config/samples = SubResource( 9 )
+config/pitch_random = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="jeane"]
+
+build_mode = 0
+polygon = Vector2Array( -24, 6, -22, -5, -20, -19, -6, -25, 11, -25, 17, -21, 24, -12, 24, -5, 24, 4, 20, 11, 16, 19, 8, 26, -6, 25, -13, 16, -20, 8 )
+shape_range = Vector2( 0, 4 )
+trigger = false
+
+[node name="manu" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 370, 127 )
+input/pickable = true
+shapes/0/shape = SubResource( 10 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="manu"]
+
+texture = ExtResource( 16 )
+
+[node name="select" type="TouchScreenButton" parent="manu"]
+
+transform/pos = Vector2( 0, -2 )
+transform/scale = Vector2( 3, 3 )
+normal = null
+pressed = null
+bitmask = null
+shape = SubResource( 11 )
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "select_manu"
+visibility_mode = 0
+
+[node name="sample" type="SamplePlayer2D" parent="manu"]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 3
+config/samples = SubResource( 12 )
+config/pitch_random = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="manu"]
+
+build_mode = 0
+polygon = Vector2Array( 13, -26, 2, -26, -21, -6, -26, 4, -26, 12, -15, 26, 2, 26, 20, 8, 28, -8, 27, -23 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="gustavo" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 104, 367 )
+input/pickable = true
+shapes/0/shape = SubResource( 13 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="gustavo"]
+
+texture = ExtResource( 22 )
+
+[node name="select" type="TouchScreenButton" parent="gustavo"]
+
+transform/pos = Vector2( 0, -2 )
+transform/scale = Vector2( 3, 3 )
+normal = null
+pressed = null
+bitmask = null
+shape = SubResource( 11 )
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "select_gustavo"
+visibility_mode = 0
+
+[node name="sample" type="SamplePlayer2D" parent="gustavo"]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 3
+config/samples = null
+config/pitch_random = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="gustavo"]
+
+build_mode = 0
+polygon = Vector2Array( 9, -24, -4, -25, -21, -11, -26, 4, -26, 12, -15, 26, 0, 23, 18, 9, 23, -10, 20, -18 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="mari" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 239, 368 )
+input/pickable = true
+shapes/0/shape = SubResource( 14 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="mari"]
+
+texture = ExtResource( 23 )
+
+[node name="select" type="TouchScreenButton" parent="mari"]
+
+transform/pos = Vector2( 0, -2 )
+transform/scale = Vector2( 3, 3 )
+normal = null
+pressed = null
+bitmask = null
+shape = SubResource( 11 )
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "select_mari"
+visibility_mode = 0
+
+[node name="sample" type="SamplePlayer2D" parent="mari"]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 3
+config/samples = null
+config/pitch_random = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="mari"]
+
+build_mode = 0
+polygon = Vector2Array( 13, -26, 3, -26, -23, -5, -26, 4, -23, 12, -13, 23, 3, 26, 25, 6, 27, -9, 25, -21 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="nati" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 235, 216 )
+input/pickable = true
+shapes/0/shape = SubResource( 15 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="nati"]
+
+texture = ExtResource( 24 )
+
+[node name="select" type="TouchScreenButton" parent="nati"]
+
+transform/pos = Vector2( 0, -2 )
+transform/scale = Vector2( 3, 3 )
+normal = null
+pressed = null
+bitmask = null
+shape = SubResource( 11 )
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "select_nati"
+visibility_mode = 0
+
+[node name="sample" type="SamplePlayer2D" parent="nati"]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 3
+config/samples = null
+config/pitch_random = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="nati"]
+
+build_mode = 0
+polygon = Vector2Array( 14, -25, -4, -25, -25, -20, -26, 4, -26, 12, -15, 26, 6, 25, 18, 13, 26, 0, 25, -17 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="athos" type="Area2D" parent="."]
+
+transform/pos = Vector2( 370, 217 )
+input/pickable = true
+shapes/0/shape = SubResource( 16 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="athos"]
+
+texture = ExtResource( 25 )
+
+[node name="select" type="TouchScreenButton" parent="athos"]
+
+transform/pos = Vector2( 0, -2 )
+transform/scale = Vector2( 3, 3 )
+normal = null
+pressed = null
+bitmask = null
+shape = SubResource( 11 )
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "select_athos"
+visibility_mode = 0
+
+[node name="sample" type="SamplePlayer2D" parent="athos"]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 3
+config/samples = SubResource( 20 )
+config/pitch_random = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="athos"]
+
+build_mode = 0
+polygon = Vector2Array( 9, -24, -9, -25, -23, -16, -26, 4, -26, 12, -15, 26, 0, 23, 19, 11, 23, -10, 20, -18 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="cabelinho" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 242, 458 )
+input/pickable = true
+shapes/0/shape = SubResource( 17 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="cabelinho"]
+
+texture = ExtResource( 31 )
+
+[node name="select" type="TouchScreenButton" parent="cabelinho"]
+
+transform/pos = Vector2( 0, -2 )
+transform/scale = Vector2( 3, 3 )
+normal = null
+pressed = null
+bitmask = null
+shape = SubResource( 11 )
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "select_cabelinho"
+visibility_mode = 0
+
+[node name="sample" type="SamplePlayer2D" parent="cabelinho"]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 3
+config/samples = null
+config/pitch_random = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cabelinho"]
+
+build_mode = 0
+polygon = Vector2Array( 9, -24, -8, -25, -22, -14, -26, 4, -23, 11, -13, 24, 11, 25, 23, 11, 27, -10, 19, -20 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="filipe" type="Area2D" parent="."]
+
+transform/pos = Vector2( 99, 218 )
+input/pickable = true
+shapes/0/shape = SubResource( 18 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="filipe"]
+
+texture = ExtResource( 32 )
+
+[node name="select" type="TouchScreenButton" parent="filipe"]
+
+transform/pos = Vector2( 0, -2 )
+transform/scale = Vector2( 3, 3 )
+normal = null
+pressed = null
+bitmask = null
+shape = SubResource( 11 )
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "select_filipe"
+visibility_mode = 0
+
+[node name="sample" type="SamplePlayer2D" parent="filipe"]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 5
+config/samples = SubResource( 19 )
+config/pitch_random = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="filipe"]
+
+build_mode = 0
+polygon = Vector2Array( 8, -26, -9, -26, -21, -11, -23, -1, -20, 8, -3, 24, 14, 24, 20, 10, 27, -10, 19, -22 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[connection signal="area_enter" from="alysson" to="alysson" method="_on_alysson_area_enter"]
+
+[connection signal="area_enter" from="jeane" to="jeane" method="_on_alysson_area_enter"]
+
+[connection signal="area_enter" from="manu" to="manu" method="_on_alysson_area_enter"]
+
+[connection signal="area_enter" from="gustavo" to="gustavo" method="_on_alysson_area_enter"]
+
+[connection signal="area_enter" from="mari" to="mari" method="_on_alysson_area_enter"]
+
+[connection signal="area_enter" from="nati" to="nati" method="_on_alysson_area_enter"]
+
+[connection signal="area_enter" from="athos" to="athos" method="_on_alysson_area_enter"]
+
+[connection signal="area_enter" from="cabelinho" to="cabelinho" method="_on_alysson_area_enter"]
+
+[connection signal="area_enter" from="filipe" to="filipe" method="_on_alysson_area_enter"]
+
+
